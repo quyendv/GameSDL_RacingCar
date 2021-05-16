@@ -31,9 +31,3 @@ void PlayerPower::Decrease() {
 	number--;
 	pos_list.pop_back(); 
 }
-
-//void PlayerPower::Increase() {
-//	number++;
-//	int last_pos = pos_list.back() + 20;
-//	pos_list.push_back(last_pos);
-//}

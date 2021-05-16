@@ -16,7 +16,5 @@ public:
 	MainObject();
 	~MainObject();
 	void HandleInputAction(SDL_Event events);
-	//void HandleMove();
-
 	bool CheckCollision(const SDL_Rect& Threats);
 };

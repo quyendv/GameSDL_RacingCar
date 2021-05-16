@@ -28,7 +28,7 @@ const int COLOR_KEY_R = 255;
 const int COLOR_KEY_G = 255;
 const int COLOR_KEY_B = 255;
 
-const int RENDER_DRAW_COLOR = 0XFF; //255
+const int RENDER_DRAW_COLOR = 0xFF;
 
 // Road
 const int ROAD_LANE_NUM = 4;

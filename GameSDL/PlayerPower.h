@@ -12,8 +12,7 @@ public:
 
 	void Show(SDL_Renderer* screen);
 	void Init(SDL_Renderer* screen);
-	void SetNum(const int& _num) { number = _num; }
+	void SetNum(int _number) { number = _number; }
 	int GetNum() { return number; }
-	//void Increase();
 	void Decrease();
 };

@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Users\DELL\source\repos\GameSDL\GameSDL\main.cpp(140,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\DELL\source\repos\GameSDL\GameSDL\main.cpp(141,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\DELL\source\repos\GameSDL\GameSDL\main.cpp(135,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\DELL\source\repos\GameSDL\GameSDL\main.cpp(136,15): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   GameSDL.vcxproj -> C:\Users\DELL\source\repos\GameSDL\Debug\GameSDL.exe

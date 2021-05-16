@@ -13,9 +13,4 @@ public:
 	ThreatObject();
 	~ThreatObject();
 	void HandleMove();
-	void HandleInputAction(SDL_Event events);
-	void set_x_val(const int& val) { x_val = val; }
-	void set_y_val(const int& val) { y_val = val; }
-	int get_x_val() { return x_val; }
-	int get_y_val() { return y_val; }
 };

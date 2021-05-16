@@ -8,15 +8,11 @@ ThreatObject::ThreatObject() {
 	rect.w = WIDTH_THREAT;
 	rect.h = HEIGHT_THREAT;
 
-	x_val = 0;
-	y_val = 0;
+	x_val = 2;
+	y_val = 2;
 }
 
 ThreatObject::~ThreatObject() {
-
-}
-
-void ThreatObject::HandleInputAction(SDL_Event events) {
 
 }
 

@@ -21,7 +21,7 @@ void InitData() {
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-	g_window = SDL_CreateWindow("Demo Project Racing Car", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	g_window = SDL_CreateWindow("Racing Car", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	g_screen = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR);
 
@@ -50,7 +50,6 @@ void Load_Objects() {
 	p_threat2.LoadImg("Image//Car_2.png", g_screen);
 	p_threat3.LoadImg("Image//Car_3.png", g_screen);
 
-	p_threat1.set_y_val(2); p_threat2.set_y_val(2); p_threat3.set_y_val(2);
 	p_threat1.SetRect(LANE_1, 0);
 	p_threat2.SetRect(LANE_2, p_threat1.GetRect().y - SCREEN_HEIGHT / 3);
 	p_threat3.SetRect(LANE_3, p_threat2.GetRect().y - SCREEN_HEIGHT / 3);
@@ -88,10 +87,10 @@ int main(int agrc, char* agrv[])
 	InitData();
 	Load_Background();
 	Load_Objects();
-	Mix_PlayChannel(-1, g_sound, 0);
 
+	Mix_PlayChannel(-1, g_sound, 0);
 	bool stop = false;
-	int delay_speed = 2;
+	int delay_speed = 3;
 	while (!stop)
 	{
 		while (SDL_PollEvent(&g_event) != 0) {
@@ -100,13 +99,11 @@ int main(int agrc, char* agrv[])
 				break;
 			}
 			Car.HandleInputAction(g_event);
-			//Car.HandleMove();
 		}
 
-		SDL_SetRenderDrawColor(g_screen, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR, RENDER_DRAW_COLOR); // set lại màu screen
-		SDL_RenderClear(g_screen); // xóa màn hình
+		SDL_RenderClear(g_screen); // clear screen
 
-		// chạy background
+		// handle background
 		g_background.SetRect(0, g_background.GetRect().y + 1);
 		g_background1.SetRect(0, g_background1.GetRect().y + 1);
 
@@ -124,9 +121,7 @@ int main(int agrc, char* agrv[])
 		Car.Render(g_screen);
 
 		p_threat1.Render(g_screen); p_threat2.Render(g_screen); p_threat3.Render(g_screen);
-		p_threat1.HandleMove();	/*while (p_threat1.GetRect().y == p_threat2.GetRect().y || p_threat1.GetRect().y == p_threat3.GetRect().y) p_threat1.HandleMove();*/
-		p_threat2.HandleMove(); /*while (p_threat2.GetRect().y == p_threat1.GetRect().y || p_threat2.GetRect().y == p_threat3.GetRect().y) p_threat2.HandleMove();*/
-		p_threat3.HandleMove(); /*while (p_threat3.GetRect().y == p_threat2.GetRect().y || p_threat3.GetRect().y == p_threat1.GetRect().y) p_threat3.HandleMove();*/
+		p_threat1.HandleMove();		p_threat2.HandleMove();		p_threat3.HandleMove(); 
 
 		player_power.Show(g_screen);
 
@@ -149,11 +144,10 @@ int main(int agrc, char* agrv[])
 				SDL_RenderPresent(g_screen);
 			}
 
-			//
 			player_power.SetNum(player_power.GetNum() - 1);
 			if (player_power.GetNum() >= 0) {
 				Car.SetRect(POS_X_START_MAIN_OBJECT, POS_Y_START_MAIN_OBJECT);
-				SDL_Delay(1000);
+				SDL_Delay(500);
 				player_power.Decrease();
 				player_power.Show(g_screen);
 			}
@@ -170,8 +164,6 @@ int main(int agrc, char* agrv[])
 		// update màn hình
 		SDL_RenderPresent(g_screen);
 		SDL_Delay(delay_speed);
-		//if (delay_speed > 0 && (int)time_val % 5 == 0) delay_speed--;
-		//cout << delay_speed << endl;
 	}
 
 	close();

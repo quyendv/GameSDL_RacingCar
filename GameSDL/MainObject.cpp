@@ -5,8 +5,6 @@ MainObject::MainObject() {
 	rect.y = 0;
 	rect.w = WIDTH_MAIN_OBJECT;
 	rect.h = HEIGHT_MAIN_OBJECT;
-	//x_val = 0;
-	//y_val = 0;
 	x_val = WIDTH_MAIN_OBJECT / 2;
 	y_val = HEIGHT_MAIN_OBJECT / 2;
 }
@@ -22,25 +20,21 @@ void MainObject::HandleInputAction(SDL_Event events) {
 		switch (events.key.keysym.sym)
 		{
 		case SDLK_UP:
-			//y_val -= HEIGHT_MAIN_OBJECT / 3;
 			rect.y -= y_val;
 			if (rect.y < 0) rect.y += y_val;
 			break;
 
 		case SDLK_DOWN:
-			//y_val += HEIGHT_MAIN_OBJECT / 3;
 			rect.y += y_val;
 			if (rect.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT) rect.y -= y_val;
 			break;
 
 		case SDLK_LEFT:
-			//x_val -= WIDTH_MAIN_OBJECT / 3;
 			rect.x -= x_val;
 			if (rect.x < 0) rect.x += x_val;
 			break;
 
 		case SDLK_RIGHT:
-			//x_val += WIDTH_MAIN_OBJECT / 3;
 			rect.x += x_val;
 			if (rect.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH) rect.x -= x_val;
 			break;
@@ -49,56 +43,7 @@ void MainObject::HandleInputAction(SDL_Event events) {
 			break;
 		}
 	}
-
-	else if (events.type == SDL_KEYUP) 
-	{
-		//switch (events.key.keysym.sym)
-		//{
-		//case SDLK_UP:
-		//	//y_val += HEIGHT_MAIN_OBJECT / 3;
-		//	y_val = 0;
-		//	break;
-
-		//case SDLK_DOWN:
-		//	//y_val -= HEIGHT_MAIN_OBJECT / 3;
-		//	y_val = 0;
-		//	break;
-
-		//case SDLK_LEFT:
-		//	//x_val += WIDTH_MAIN_OBJECT / 3;
-		//	x_val = 0;
-		//	break;
-
-		//case SDLK_RIGHT:
-		//	//x_val -= WIDTH_MAIN_OBJECT / 3;
-		//	x_val = 0;
-		//	break;
-
-		//default:
-		//	break;
-		//}
-	}
-
-	// MOUSE
-	else if (events.type == SDL_MOUSEBUTTONDOWN) {
-
-	}
-
-	else if (events.type == SDL_MOUSEBUTTONUP) {
-
-	}
-
 }
-
-//void MainObject::HandleMove() {
-//	rect.x += x_val;
-//	if (rect.x < 0 || rect.x + WIDTH_MAIN_OBJECT > SCREEN_WIDTH)
-//		rect.x -= x_val;
-//
-//	rect.y += y_val;
-//	if (rect.y < 0 || rect.y + HEIGHT_MAIN_OBJECT > SCREEN_HEIGHT)
-//		rect.y -= y_val;
-//}
 
 bool MainObject::CheckCollision(const SDL_Rect& Threats) {
 	// MainObject
